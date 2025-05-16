@@ -12,6 +12,7 @@ from moviepy.editor import ImageSequenceClip, CompositeVideoClip, CompositeAudio
 from .util import read_json
 from .dataloader import get_assets
 from .lipsync import viseme_sequencer, upsample
+from .emotion_focealign import EmotionForceAlign
 
 
 class FrameSequence:
@@ -23,6 +24,7 @@ class FrameSequence:
         self.mouth_coords = []
         self.final_frames = []
         self.pose_changes = []
+        self.emotions = []  # Store emotions for each frame
 
 
 class animate:
@@ -30,6 +32,7 @@ class animate:
 
     def __init__(self, audio_file: str, transcript: str = None, fps: int = 48):
         self.audio_file = audio_file
+        self.transcript = transcript
         self.sequence = FrameSequence()
         self.assets = get_assets()
         self.fps = fps
@@ -37,6 +40,10 @@ class animate:
 
         # Initialize blinking rate (blink every 3 seconds)
         self.blink_rate = 3.0
+
+        # Create emotion force alignment
+        self.emotion_aligner = EmotionForceAlign(audio_file=self.audio_file, transcript=self.transcript)
+        self.word_alignments = self.emotion_aligner.inference()
 
         # Create sequence of mouth images
         self.viseme_sequence = viseme_sequencer(self.audio_file, transcript, self.fps)
@@ -54,31 +61,35 @@ class animate:
 
     def build_pose_sequence(self):
         """Creates the sequence of pose images for the video"""
-        emotion = self.random_emotion()
-        pose = random.choice(emotion)
+        emotions_list = list(self.assets.__dict__.keys())
+        current_emotion_name = random.choice(emotions_list)
+        current_pose = None
+        prev_emotion = None
 
-        # Add a character pose frame for every frame of a mouth
         for i, _ in enumerate(self.sequence.mouth_files):
-            if self.sequence.pose_changes[i]:
-                # Change the pose of the character
-                emotion = self.random_emotion()
-                pose = random.choice(emotion)
+            frame_emotion = self.sequence.emotions[i] if i < len(self.sequence.emotions) else None
 
+            if frame_emotion is not None and frame_emotion in self.assets.__dict__:
+                if prev_emotion is None or prev_emotion != frame_emotion:
+                    current_emotion_poses = getattr(self.assets, frame_emotion)
+                    current_pose = random.choice(current_emotion_poses)
+                    current_emotion_name = frame_emotion
+            elif frame_emotion is None and current_pose is None:
+                current_emotion_poses = getattr(self.assets, current_emotion_name)
+                current_pose = random.choice(current_emotion_poses)
+
+            prev_emotion = frame_emotion
             eyes = self.blink_manager(idx=i)
-            self.sequence.pose_files.append(pose.image_files[eyes])
-            self.sequence.mouth_coords.append(pose.mouth_coordinates)
+            self.sequence.pose_files.append(current_pose.image_files[eyes])
+            self.sequence.mouth_coords.append(current_pose.mouth_coordinates)
 
-        # Prepend absolute path to all pose images
         self.sequence.pose_files = [f"{os.path.dirname(__file__)}{file}" for file in self.sequence.pose_files]
-
-        # Create mouth PIL image for every frame, with image transformations based on pose
         for i, _ in enumerate(self.sequence.mouth_files):
             transformed_image = mouth_transformation(
                 mouth_file=self.sequence.mouth_files[i],
                 mouth_coord=self.sequence.mouth_coords[i],
             )
             self.sequence.mouth_images.append(transformed_image)
-        return
 
     def blink_manager(self, idx):
 
@@ -116,12 +127,21 @@ class animate:
         for i, _ in enumerate(self.viseme_sequence):
             if self.viseme_sequence[i].visemes:
                 self.sequence.mouth_files.extend(self.viseme_sequence[i].visemes)
-                pose_changes = [0] * len(self.viseme_sequence[i].visemes)
-                if self.viseme_sequence[i].breath:
-                    pose_changes[0] = 1
-                    self.sequence.pose_changes.extend(pose_changes)
-                else:
-                    self.sequence.pose_changes.extend(pose_changes)
+
+                current_pose = [None] * len(self.viseme_sequence[i].visemes)
+                if len(current_pose) > 0:
+                    current_pose[0] = self.viseme_sequence[i]
+
+                # Store the emotion for each frame
+                current_emotion = self.viseme_sequence[i].emotion
+                emotions = [current_emotion] * len(self.viseme_sequence[i].visemes)
+                self.sequence.emotions.extend(emotions)
+
+                self.sequence.pose_changes.extend(current_pose)
+
+        if len(self.sequence.emotions) < len(self.sequence.mouth_files):
+            last_emotion = self.sequence.emotions[-1] if self.sequence.emotions else None
+            self.sequence.emotions.extend([last_emotion] * (len(self.sequence.mouth_files) - len(self.sequence.emotions)))
 
         # Prepend absolute path to mouth images
         for i, _ in enumerate(self.sequence.mouth_files):
@@ -129,15 +149,22 @@ class animate:
             new_file = f"{os.path.dirname(__file__)}/assets/visemes/positive/{file}"
             self.sequence.mouth_files[i] = new_file
 
-    def random_emotion(self):
-        """Generates a random emotion to use in sequence
+    def get_emotion(self, word_idx=None):
+        """Gets the appropriate emotion to use in sequence based on word index or random if not specified
+
+        Args:
+            word_idx (int, optional): Index of the word in the word_alignments list. Defaults to None.
 
         Returns:
-            list[Pose]: List of poses from a random emotion
+            list[Pose]: List of poses for the emotion
         """
+        word = self.word_alignments[word_idx]
         emotions_list = list(self.assets.__dict__.keys())
-        emotion = random.choice(emotions_list)
-        return getattr(self.assets, emotion)
+        if word.emotion and word.emotion in emotions_list:
+            return getattr(self.assets, word.emotion)
+        else:
+            emotion = random.choice(emotions_list)
+            return getattr(self.assets, emotion)
 
     def get_frame_size(self):
         pose_image = cv2.imread(self.sequence.pose_files[0])
