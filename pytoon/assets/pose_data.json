@@ -8,10 +8,10 @@
                     "shut": "/assets/poses/3.png"
                 },
                 "mouth_coordinates": {
-                    "x": 391.8,
-                    "y": 501.3,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 5700.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
                     "rotation": 0.0
                 }
@@ -23,10 +23,10 @@
                     "shut": "/assets/poses/6.png"
                 },
                 "mouth_coordinates": {
-                    "x": 500.1,
-                    "y": 489.3,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
                     "rotation": 0.0
                 }
@@ -38,10 +38,10 @@
                     "shut": "/assets/poses/9.png"
                 },
                 "mouth_coordinates": {
-                    "x": 372.3,
-                    "y": 513.0,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
                     "rotation": 0.0
                 }
@@ -53,12 +53,12 @@
                     "shut": "/assets/poses/12.png"
                 },
                 "mouth_coordinates": {
-                    "x": 411.6,
-                    "y": 442.5,
-                    "scale_x": 1.0,
-                    "scale_y": 0.912,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 7.0
+                    "rotation": 0.0
                 }
             },
             {
@@ -68,10 +68,10 @@
                     "shut": "/assets/poses/15.png"
                 },
                 "mouth_coordinates": {
-                    "x": 462.6,
-                    "y": 489.6,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
                     "rotation": 0.0
                 }
@@ -85,10 +85,10 @@
                     "shut": "/assets/poses/21.png"
                 },
                 "mouth_coordinates": {
-                    "x": 369.9,
-                    "y": 513.9,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
                     "rotation": 0.0
                 }
@@ -100,12 +100,12 @@
                     "shut": "/assets/poses/24.png"
                 },
                 "mouth_coordinates": {
-                    "x": 492.9,
-                    "y": 500.4,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 11.6
+                    "rotation": 0.0
                 }
             },
             {
@@ -115,12 +115,12 @@
                     "shut": "/assets/poses/30.png"
                 },
                 "mouth_coordinates": {
-                    "x": 521.7,
-                    "y": 488.4,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
-                    "flip_x": true,
-                    "rotation": 1.6
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
+                    "flip_x": false,
+                    "rotation": 0.0
                 }
             }
         ],
@@ -132,12 +132,12 @@
                     "shut": "/assets/poses/33.png"
                 },
                 "mouth_coordinates": {
-                    "x": 345.6,
-                    "y": 665.1,
-                    "scale_x": 1.0,
-                    "scale_y": 0.944,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": -19.0
+                    "rotation": 0.0
                 }
             },
             {
@@ -147,12 +147,12 @@
                     "shut": "/assets/poses/36.png"
                 },
                 "mouth_coordinates": {
-                    "x": 484.8,
-                    "y": 438.6,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 20.2
+                    "rotation": 0.0
                 }
             },
             {
@@ -162,11 +162,11 @@
                     "shut": "/assets/poses/39.png"
                 },
                 "mouth_coordinates": {
-                    "x": 459.6,
-                    "y": 541.8,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
-                    "flip_x": true,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
+                    "flip_x": false,
                     "rotation": 0.0
                 }
             },
@@ -177,12 +177,12 @@
                     "shut": "/assets/poses/42.png"
                 },
                 "mouth_coordinates": {
-                    "x": 407.7,
-                    "y": 486.9,
-                    "scale_x": 1.0,
-                    "scale_y": 0.926,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 8.0
+                    "rotation": 0.0
                 }
             },
             {
@@ -192,10 +192,10 @@
                     "shut": "/assets/poses/45.png"
                 },
                 "mouth_coordinates": {
-                    "x": 533.4,
-                    "y": 521.1,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
                     "rotation": 0.0
                 }
@@ -209,12 +209,12 @@
                     "shut": "/assets/poses/48.png"
                 },
                 "mouth_coordinates": {
-                    "x": 440.7,
-                    "y": 482.7,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": -5.6
+                    "rotation": 0.0
                 }
             },
             {
@@ -224,12 +224,12 @@
                     "shut": "/assets/poses/51.png"
                 },
                 "mouth_coordinates": {
-                    "x": 486.6,
-                    "y": 424.2,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 10.0
+                    "rotation": 0.0
                 }
             },
             {
@@ -239,12 +239,12 @@
                     "shut": "/assets/poses/54.png"
                 },
                 "mouth_coordinates": {
-                    "x": 402.9,
-                    "y": 437.1,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": -18.0
+                    "rotation": 0.0
                 }
             },
             {
@@ -254,12 +254,12 @@
                     "shut": "/assets/poses/57.png"
                 },
                 "mouth_coordinates": {
-                    "x": 475.2,
-                    "y": 470.1,
-                    "scale_x": 1.0,
-                    "scale_y": 0.907,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 6.8
+                    "rotation": 0.0
                 }
             },
             {
@@ -269,11 +269,11 @@
                     "shut": "/assets/poses/60.png"
                 },
                 "mouth_coordinates": {
-                    "x": 613.8,
-                    "y": 510.3,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
-                    "flip_x": true,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
+                    "flip_x": false,
                     "rotation": 0.0
                 }
             }
@@ -286,10 +286,10 @@
                     "shut": "/assets/poses/63.png"
                 },
                 "mouth_coordinates": {
-                    "x": 397.2,
-                    "y": 497.7,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
                     "rotation": 0.0
                 }
@@ -301,12 +301,12 @@
                     "shut": "/assets/poses/66.png"
                 },
                 "mouth_coordinates": {
-                    "x": 479.7,
-                    "y": 509.4,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 10.7
+                    "rotation": 0.0
                 }
             },
             {
@@ -316,12 +316,12 @@
                     "shut": "/assets/poses/69.png"
                 },
                 "mouth_coordinates": {
-                    "x": 536.7,
-                    "y": 457.5,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
-                    "flip_x": true,
-                    "rotation": -12.2
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
+                    "flip_x": false,
+                    "rotation": 0.0
                 }
             },
             {
@@ -331,12 +331,12 @@
                     "shut": "/assets/poses/72.png"
                 },
                 "mouth_coordinates": {
-                    "x": 515.1,
-                    "y": 479.7,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 6.4
+                    "rotation": 0.0
                 }
             },
             {
@@ -346,12 +346,12 @@
                     "shut": "/assets/poses/75.png"
                 },
                 "mouth_coordinates": {
-                    "x": 429.6,
-                    "y": 513.6,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 0.7
+                    "rotation": 0.0
                 }
             }
         ],
@@ -363,12 +363,12 @@
                     "shut": "/assets/poses/78.png"
                 },
                 "mouth_coordinates": {
-                    "x": 432.3,
-                    "y": 551.7,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": -14.3
+                    "rotation": 0.0
                 }
             },
             {
@@ -378,12 +378,12 @@
                     "shut": "/assets/poses/81.png"
                 },
                 "mouth_coordinates": {
-                    "x": 360.0,
-                    "y": 551.4,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 0.7
+                    "rotation": 0.0
                 }
             },
             {
@@ -393,12 +393,12 @@
                     "shut": "/assets/poses/84.png"
                 },
                 "mouth_coordinates": {
-                    "x": 446.4,
-                    "y": 553.2,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 5.9
+                    "rotation": 0.0
                 }
             },
             {
@@ -408,12 +408,12 @@
                     "shut": "/assets/poses/87.png"
                 },
                 "mouth_coordinates": {
-                    "x": 552.9,
-                    "y": 471.9,
-                    "scale_x": 1.0,
-                    "scale_y": 1.0,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 2.7
+                    "rotation": 0.0
                 }
             },
             {
@@ -423,12 +423,12 @@
                     "shut": "/assets/poses/90.png"
                 },
                 "mouth_coordinates": {
-                    "x": 375.9,
-                    "y": 537.3,
-                    "scale_x": 0.769,
-                    "scale_y": 0.994,
+                    "x": 468.8,
+                    "y": 570.3,
+                    "scale_x": 0.3,
+                    "scale_y": 0.3,
                     "flip_x": false,
-                    "rotation": 9.5
+                    "rotation": 0.0
                 }
             }
         ]
