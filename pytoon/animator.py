@@ -1,20 +1,21 @@
-import os
-import json
-import random
-
-from PIL import Image
-from datetime import datetime
-import numpy as np
-import cv2
 import copy
+import os
+import random
+from typing import List
+
+import cv2
+import numpy as np
+from PIL import Image
 from moviepy.editor import ImageSequenceClip, CompositeVideoClip, CompositeAudioClip, AudioFileClip, VideoClip
 
-from .util import read_json
-from .dataloader import get_assets
-from .lipsync import viseme_sequencer, upsample
+from emotion_forcealign.utils import strip_tag
+from .dataloader import get_assets, Pose
+from .lipsync import viseme_sequencer
 
 
 class FrameSequence:
+    emotion_changes: List[str | None]
+
     def __init__(self):
         self.pose_files = []
         self.mouth_files = []
@@ -22,7 +23,7 @@ class FrameSequence:
         self.mouth_images = []
         self.mouth_coords = []
         self.final_frames = []
-        self.pose_changes = []
+        self.emotion_changes = []
 
 
 class animate:
@@ -54,14 +55,16 @@ class animate:
 
     def build_pose_sequence(self):
         """Creates the sequence of pose images for the video"""
-        emotion = self.random_emotion()
+        emotion = self.get_random_emotion()
         pose = random.choice(emotion)
 
         # Add a character pose frame for every frame of a mouth
         for i, _ in enumerate(self.sequence.mouth_files):
-            if self.sequence.pose_changes[i]:
-                # Change the pose of the character
-                emotion = self.random_emotion()
+
+            if self.sequence.emotion_changes[i] is not None:
+                # Change the emotion of the character
+                emotion_name = strip_tag(self.sequence.emotion_changes[i])
+                emotion = self.get_emotion(emotion_name)
                 pose = random.choice(emotion)
 
             eyes = self.blink_manager(idx=i)
@@ -116,12 +119,13 @@ class animate:
         for i, _ in enumerate(self.viseme_sequence):
             if self.viseme_sequence[i].visemes:
                 self.sequence.mouth_files.extend(self.viseme_sequence[i].visemes)
-                pose_changes = [0] * len(self.viseme_sequence[i].visemes)
-                if self.viseme_sequence[i].breath:
-                    pose_changes[0] = 1
-                    self.sequence.pose_changes.extend(pose_changes)
+                emotion_changes = [None] * len(self.viseme_sequence[i].visemes)
+                if self.viseme_sequence[i].emotion is not None:
+                    emotion_changes[0] = self.viseme_sequence[i].emotion
+                    self.sequence.emotion_changes.extend(emotion_changes)
                 else:
-                    self.sequence.pose_changes.extend(pose_changes)
+                    self.sequence.emotion_changes.extend(emotion_changes)
+
 
         # Prepend absolute path to mouth images
         for i, _ in enumerate(self.sequence.mouth_files):
@@ -129,20 +133,27 @@ class animate:
             new_file = f"{os.path.dirname(__file__)}/assets/visemes/positive/{file}"
             self.sequence.mouth_files[i] = new_file
 
-    def random_emotion(self):
+    def get_random_emotion(self) -> list[Pose] | None:
+        """Generates a random emotion to use in sequence"""
+        emotions_list = list(self.assets.__dict__.keys())
+        emotion = random.choice(emotions_list)
+        return getattr(self.assets, emotion)
+
+    def get_emotion(self, emotion: str = None) -> list[Pose] | None:
         """Generates a random emotion to use in sequence
 
         Returns:
             list[Pose]: List of poses from a random emotion
         """
-        emotions_list = list(self.assets.__dict__.keys())
-        emotion = random.choice(emotions_list)
-        return getattr(self.assets, emotion)
+        for emotion_poses in list(self.assets.__dict__.keys()):
+            if emotion_poses == emotion:
+                return getattr(self.assets, emotion_poses)
+        return None
 
     def get_frame_size(self):
         pose_image = cv2.imread(self.sequence.pose_files[0])
         height, width, _ = pose_image.shape
-        return (width, height)
+        return width, height
 
     def compile_animation(self):
         for i, _ in enumerate(self.sequence.pose_files):
@@ -184,10 +195,6 @@ def mouth_transformation(mouth_file, mouth_coord) -> Image:
         This transformation is applied because, the same mouth shape images
         are used for different pose images, but the size, angle, and position
         of a mouth image will depend on which pose image is being used.
-
-    Args:
-        mouth_path (str): .png file path pointing to mouth image
-        transformation (np.array): image transformation data for mouth
 
     Returns:
         Image: PIL Image object of mouth image with applied transformations

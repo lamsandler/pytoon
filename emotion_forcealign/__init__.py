@@ -1,0 +1,1 @@
+from emotion_forcealign.emotion_forcealign import EmotionForceAlign

@@ -1,10 +1,8 @@
-from forcealign import ForceAlign
+from emotion_forcealign.emotion_forcealign import EmotionForceAlign
 from .util import read_json
 from dataclasses import dataclass
-from datetime import datetime
 from typing import Union
 import random
-import re
 
 # Viseme image for silence (i.e. closed mouth, not speaking)
 SILENT_VISEME = "9.png"
@@ -20,17 +18,19 @@ class WordViseme:
     word: Union[str, None]  # Word associated with viseme
     visemes: list[str]  # List of mouth shape images for viseme
     phonemes: list[str]  # The phoneme associated with the viseme
-    time_start: datetime  # The time the word starts (seconds)
-    time_end: datetime  # The time the word ends (seconds)
+    time_start: float  # The time the word starts (seconds)
+    time_end: float  # The time the word ends (seconds)
     duration: float  # total word duration from start to end (seconds)
     total_frames: int  # total number of frames in video for word
     breath: bool
+    emotion: str | None
 
 
 def viseme_sequencer(audio_file: str, transcript: str = None, fps: int = 48) -> list[WordViseme]:
     """Converts and audio / txt file to force aligned viseme sequence
 
     Args:
+        fps ():
         audio_file (str): Path to audio file of a person speaking english (.wav or .mp3)
         transcript (str): (optional) Trascript string of audio recording
             - If not transcript is provided, it will automatically detect with speech to text
@@ -40,7 +40,7 @@ def viseme_sequencer(audio_file: str, transcript: str = None, fps: int = 48) -> 
     """
     ENDING_SILENCE_SECONDS = 2.5
     # Provide path to audio_file and corresponding txt_file with audio transcript
-    aligner = ForceAlign(audio_file=audio_file, transcript=transcript)
+    aligner = EmotionForceAlign(audio_file=audio_file, transcript=transcript)
 
     # Runs forced alignment algorithm and returns alignment results
     words = aligner.inference()
@@ -78,6 +78,7 @@ def viseme_sequencer(audio_file: str, transcript: str = None, fps: int = 48) -> 
                 duration=duration,
                 total_frames=total_frames,
                 breath=word.breath,
+                emotion=word.emotion,
             )
         )
 
@@ -205,6 +206,7 @@ def get_silent_viseme(current_viseme, next_viseme, total_duration, target_frames
         duration=duration,
         total_frames=total_frames,
         breath=False,
+        emotion=None,
     )
 
 
@@ -223,4 +225,5 @@ def ending_silence(duration: float, fps: int, start_t: int):
         duration=duration,
         total_frames=total_frames,
         breath=False,
+        emotion=None,
     )
