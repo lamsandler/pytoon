@@ -1,15 +1,17 @@
 import json
 import os
+from PIL import Image
 from scipy.io import wavfile
 from scipy.signal import resample
 import numpy as np
+import re
 
 
 def read_json(file: str) -> dict:
     """Reads a json file to dictionary
 
     Args:
-        path (str): Path to the json file.
+        file ():
 
     Returns:
         dict: Python dictionary with json data.
@@ -24,8 +26,8 @@ def write_json(data: dict, file: str) -> None:
     """Writes a Python dictionary to a json file.
 
     Args:
+        file ():
         data (dict): Python dictionary with data.
-        path (str): The path to the output json file.
     """
     path = f"{os.path.dirname(__file__)}/assets/{file}"
     with open(path, "w") as file:
