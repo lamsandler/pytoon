@@ -1,3 +1,4 @@
+import random
 import re
 from typing import List
 
@@ -22,5 +23,23 @@ def strip_tag(emotion_tag: str):
     return emotion_tag[1:-1].lower()
 
 
+def get_breath_idx(transcript):
+    """Detect where breaths might occur."""
+    transcript = transcript.replace("—", " ")
+    transcript = alpha_with_punct(transcript).upper().split()
+    idxs = []
+    for i in range(len(transcript) - 1):
+        if "," in transcript[i]:
+            idxs.append(i + 1)
+        elif "." in transcript[i] and random.choice([True, False, False]):
+            idxs.append(i + 1)
+    return idxs
+
+def alpha_with_punct(text):
+    return re.sub(r"[^a-zA-Z\s,.]", "", text)
+
 def alpha_with_punct_and_tags(text):
     return re.sub(r"[^a-zA-Z\s,.<>]", "", text)
+
+def alphabetical(text):
+    return re.sub(r"[^a-zA-Z\s]", "", text)

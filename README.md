@@ -32,7 +32,6 @@ If you have a transcript of the audio, you can directly pass it to the `animate`
 
 ```python
 from pytoon.animator import animate
-from moviepy.editor import VideoFileClip # Note: this example uses MoviePy v1.0.3
 
 # Read audio transcript to a string.
 transcript_path = "./.temp/speech.txt"
@@ -45,9 +44,6 @@ animation = animate(
     transcript=transcript,   # Audio transcript
 )
 
-# Overlay the animation on top of another video and save as an .mp4 file.
-background_video = VideoFileClip("./path/to/background_video.mp4")
-animation.export(path='video_with_transcript.mp4', background=background_video, scale=0.7)
 ```
 
 ### Example 2: Generating Animation from an MP3 File (without transcript)
@@ -55,16 +51,11 @@ If you do not have a transcript for the audio, PyToon can automatically generate
 
 ```python
 from pytoon.animator import animate
-from moviepy.editor import VideoFileClip
 
 # Create a PyToon animation without providing a transcript
 animation = animate(
     audio_file="speech.mp3"  # Input audio (transcript will be auto-generated)
 )
-
-# Overlay the animation on top of another video and save as an .mp4 file.
-background_video = VideoFileClip("./path/to/background_video.mp4")
-animation.export(path='video_auto_transcript.mp4', background=background_video, scale=0.7)
 ```
 
 ## Contributing

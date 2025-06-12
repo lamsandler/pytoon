@@ -2,13 +2,11 @@ import re
 from dataclasses import dataclass
 from typing import List
 
-from forcealign import ForceAlign, forcealign
-from forcealign.forcealign import Phoneme, phonemizer
-
-from emotion_forcealign.utils import get_emotion_idx
+from .forcealign import ForceAlign, Word, phonemizer, Phoneme
+from .utils import get_emotion_idx
 
 @dataclass
-class EmotionWord(forcealign.Word):
+class EmotionWord(Word):
     emotion: str | None
 
 class EmotionForceAlign(ForceAlign):
