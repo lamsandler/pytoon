@@ -40,7 +40,7 @@ setup(
         "networkx>=3.2.1",
         "nltk>=3.8.1",
         "numpy",
-        "opencv-python>=4.9.0.80",
+        "opencv-python>= 4.10.0.84",
         "packaging>=24.2",
         "pillow>=10.2.0",
         "proglog>=0.1.10",
