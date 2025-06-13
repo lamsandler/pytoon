@@ -39,7 +39,7 @@ setup(
         "mpmath>=1.3.0",
         "networkx>=3.2.1",
         "nltk>=3.8.1",
-        "numpy==2.1.3",
+        "numpy",
         "opencv-python>=4.9.0.80",
         "packaging>=24.2",
         "pillow>=10.2.0",
