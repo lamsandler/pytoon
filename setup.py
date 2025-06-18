@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 
 # read the contents of your README file
 from pathlib import Path
@@ -9,7 +9,7 @@ long_description = (this_directory / "README.md").read_text()
 setup(
     name="pytoon",
     version="1.5.0",
-    packages=find_packages(),
+    packages=find_namespace_packages(),
     install_requires=[
         "annotated-types>=0.6.0",
         "backports.tarfile>=1.2.0",
@@ -39,8 +39,8 @@ setup(
         "mpmath>=1.3.0",
         "networkx>=3.2.1",
         "nltk>=3.8.1",
-        "numpy",
-        "opencv-python>= 4.10.0.84",
+        "numpy>=1.21.3",
+        "opencv-python>=4.11.0.86",
         "packaging>=24.2",
         "pillow>=10.2.0",
         "proglog>=0.1.10",
@@ -53,7 +53,7 @@ setup(
         "regex>=2023.12.25",
         "requests>=2.31.0",
         "scipy>=1.12.0",
-        "soundfile>=0.12.1",
+        "soundfile>=0.13.1",
         "sox>=1.5.0",
         "sympy>=1.12",
         "torch>=2.0.0",
@@ -77,7 +77,6 @@ setup(
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
