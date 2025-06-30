@@ -60,7 +60,7 @@ setup(
         "torchaudio>=2.0.0",
         "tqdm>=4.66.2",
         "typing_extensions>=4.10.0",
-        "urllib3>=2.2.1",
+        "urllib3>=1.21.1",
     ],
     author="Luke Kerbs",
     description="A Python library for lip-syncing cartoons to voice recordings.",
