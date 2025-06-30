@@ -9,7 +9,7 @@ from typing import List
 import cv2
 import numpy as np
 from PIL import Image
-from moviepy.editor import ImageSequenceClip, CompositeVideoClip, CompositeAudioClip, AudioFileClip, VideoClip
+from moviepy import ImageSequenceClip, CompositeVideoClip, CompositeAudioClip, AudioFileClip, VideoClip
 from tqdm import tqdm
 
 from emotion_forcealign.utils import strip_tag

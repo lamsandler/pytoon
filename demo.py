@@ -1,5 +1,5 @@
 from pytoon.animator import animate
-from moviepy.editor import ImageClip
+from moviepy import ImageClip
 
 # Constants
 FPS = 48

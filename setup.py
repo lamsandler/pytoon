@@ -35,7 +35,7 @@ setup(
         "markdown-it-py>=3.0.0",
         "MarkupSafe>=2.1.5",
         "mdurl>=0.1.2",
-        "moviepy==1.0.3",
+        "moviepy>=2.0.0",
         "mpmath>=1.3.0",
         "networkx>=3.2.1",
         "nltk>=3.8.0",
