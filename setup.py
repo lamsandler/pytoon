@@ -13,7 +13,7 @@ setup(
     install_requires=[
         "annotated-types>=0.6.0",
         "backports.tarfile>=1.2.0",
-        "certifi>=2024.2.2",
+        "certifi>=2022.12.7",
         "cffi>=1.17.1",
         "charset-normalizer>=3.3.2",
         "click>=8.1.7",
