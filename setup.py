@@ -41,7 +41,7 @@ setup(
         "nltk>=3.8.0",
         "numpy<2",
         "opencv-python>=4.11.0.86",
-        "packaging>=24.2",
+        "packaging>=24.1",
         "pillow>=10.2.0",
         "proglog>=0.1.10",
         "pycparser>=2.22",
