@@ -51,7 +51,7 @@ setup(
         "Pygments>=2.18.0",
         "python-dotenv>=0.21.0",
         "regex>=2023.12.25",
-        "requests>=2.31.0",
+        "requests>=2.28.1",
         "scipy>=1.12.0",
         "soundfile>=0.13.1",
         "sox>=1.4.1",
