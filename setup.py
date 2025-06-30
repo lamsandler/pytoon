@@ -15,7 +15,7 @@ setup(
         "backports.tarfile>=1.2.0",
         "certifi>=2022.12.7",
         "cffi>=1.17.1",
-        "charset-normalizer>=3.3.2",
+        "charset-normalizer>=2.1.1",
         "click>=8.1.7",
         "decorator>=4.4.2",
         "Distance>=0.1.3",
