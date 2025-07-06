@@ -254,7 +254,7 @@ class animate:
             new_height = int(background.size[1] * scale)
             new_width = int(animation_clip.w * (new_height / animation_clip.h))
             logger.debug(f"Resizing animation to width={new_width}, height={new_height}")
-            animation_clip = animation_clip.resize(width=new_width, height=new_height)
+            animation_clip = animation_clip.resized(width=new_width, height=new_height)
 
             # Overlay the animation on top of the background clip
             logger.debug("Creating composite video clip")
@@ -265,8 +265,8 @@ class animate:
             # Add speech audio to clip with 0.2 second delay
             logger.debug(f"Adding audio from {self.audio_file}")
             audio_clip = AudioFileClip(self.audio_file)
-            audio_clip = CompositeAudioClip([audio_clip.set_start(0.2)])
-            final_clip = final_clip.set_audio(audio_clip)
+            audio_clip = CompositeAudioClip([audio_clip.with_start(0.2)])
+            final_clip = final_clip.with_audio(audio_clip)
 
             # Export video to .mp4
             logger.info(f"Writing video file to {path}")

@@ -4,7 +4,6 @@ from PIL import Image
 from scipy.io import wavfile
 from scipy.signal import resample
 import numpy as np
-import re
 
 
 def read_json(file: str) -> dict:
