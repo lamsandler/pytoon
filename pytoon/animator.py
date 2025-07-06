@@ -259,7 +259,7 @@ class animate:
             # Overlay the animation on top of the background clip
             logger.debug("Creating composite video clip")
             final_clip = CompositeVideoClip(
-                clips=[background, animation_clip.set_position(("right", "bottom"))], use_bgclip=True
+                clips=[background, animation_clip.with_position(("right", "bottom"))], use_bgclip=True
             )
 
             # Add speech audio to clip with 0.2 second delay
