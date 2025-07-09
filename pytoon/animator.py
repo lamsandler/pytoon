@@ -274,15 +274,13 @@ class animate:
                 path, codec="libx264", audio_codec="aac", preset="ultrafast", threads=4, fps=self.fps
             )
             logger.info(f"Video export complete: {path}")
-
-            logger.debug(f"Cleaning up temporary directory: {self.frames_dir}")
-            shutil.rmtree(self.frames_dir)
-
             return path
         except Exception as e:
             logger.error(f"Error during video export: {e}")
             raise
-
+        finally:
+            logger.debug(f"Cleaning up temporary directory: {self.frames_dir}")
+            shutil.rmtree(self.frames_dir)
 
 def mouth_transformation(mouth_file, mouth_coord) -> Image:
     """Transforms mouth image with scaling, flipping, and rotation.
